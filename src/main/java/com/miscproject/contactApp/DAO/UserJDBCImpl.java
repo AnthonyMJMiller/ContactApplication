@@ -10,10 +10,12 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.miscproject.contactApp.Domain.User;
 import com.miscproject.contactApp.RM.UserRowMapper;
 
+@Repository
 public class UserJDBCImpl implements UserDAO {
 	
 	@Autowired
@@ -22,8 +24,8 @@ public class UserJDBCImpl implements UserDAO {
 
 	@Override
 	public void save(User u) {
-		String sql = "INSERT INTO user(name, phone, email, address, loginName, password, role, loginStatus)"
-                + " VALUES(:name, :phone, :email, :address, :loginName, :password, :role, :loginStatus)";
+		String sql = "INSERT INTO user(name, phone, email, address, loginName, password, role, loginState)"
+                + " VALUES(:name, :phone, :email, :address, :loginName, :password, :role, :loginState)";
         Map m = new HashMap();
         m.put("name", u.getName());
         m.put("phone", u.getPhoneNo());
@@ -32,7 +34,7 @@ public class UserJDBCImpl implements UserDAO {
         m.put("loginName", u.getLoginName());
         m.put("password", u.getPassword());
         m.put("role", u.getRole());
-        m.put("loginStatus", u.getLoginState());
+        m.put("loginState", u.getLoginState());
 
         KeyHolder kh = new GeneratedKeyHolder();
         SqlParameterSource ps = new MapSqlParameterSource(m);
@@ -50,7 +52,7 @@ public class UserJDBCImpl implements UserDAO {
                 + " email=:email,"
                 + " address=:address,"
                 + " role=:role,"
-                + " loginStatus=:loginStatus "
+                + " loginState=:loginState "
                 + " WHERE userId=:userId";
         Map m = new HashMap();
         m.put("name", u.getName());
@@ -58,7 +60,7 @@ public class UserJDBCImpl implements UserDAO {
         m.put("email", u.getEmail());
         m.put("address", u.getAddress());       
         m.put("role", u.getRole());
-        m.put("loginStatus", u.getLoginState());
+        m.put("loginState", u.getLoginState());
         m.put("userId", u.getUserId());
         jdbcTemplate.update(sql, m);
 		
@@ -79,7 +81,7 @@ public class UserJDBCImpl implements UserDAO {
 
 	@Override
 	public User findById(Integer userId) {
-		String sql = "SELECT userId, name, phone, email, address, loginName, role, loginStatus"
+		String sql = "SELECT userId, name, phone, email, address, loginName, role, loginState"
                 + " FROM user WHERE userId=?";
 //        User u = 
         return (User) jdbcTemplate.queryForObject(sql, new UserRowMapper(),userId);
@@ -87,7 +89,7 @@ public class UserJDBCImpl implements UserDAO {
 
 	@Override
 	public List<User> findAll() {
-		 String sql = "SELECT userId, name, phone, email, address, loginName, role, loginStatus"
+		 String sql = "SELECT userId, name, phone, email, address, loginName, role, loginState"
 	                + " FROM user";
 	          
 	           return jdbcTemplate.query(sql, new UserRowMapper());
@@ -95,7 +97,7 @@ public class UserJDBCImpl implements UserDAO {
 
 	@Override
 	public List<User> findByProperty(String propName, Object propValue) {
-		 String sql = "SELECT userId, name, phone, email, address, loginName, role, loginStatus"
+		 String sql = "SELECT userId, name, phone, email, address, loginName, role, loginState"
 	                + " FROM user WHERE "+propName+"=?";
 	         return jdbcTemplate.query(sql, new UserRowMapper(), propValue);
 	}

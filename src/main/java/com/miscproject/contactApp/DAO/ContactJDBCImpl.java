@@ -10,10 +10,12 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.miscproject.contactApp.Domain.Contact;
 import com.miscproject.contactApp.RM.ContactRowMapper;
 
+@Repository
 public class ContactJDBCImpl implements ContactDAO {
 	
 	@Autowired
