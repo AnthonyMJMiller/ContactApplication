@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 import org.springframework.stereotype.Service;
 
 import com.miscproject.contactApp.DAO.UserDAO;
@@ -17,7 +19,7 @@ import com.miscproject.contactApp.RM.UserRowMapper;
 @Service
 public class UserServiceImpl implements UserService{
 	
-	
+	@Autowired
     private UserDAO userDAO;
 	
 	@Autowired
@@ -31,13 +33,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User login(String loginName, String password) throws UserBlockedException {
-		String sql = "SELECT userId, name, phone, email, address, role, loginStatus, loginName"
-                + " FROM user WHERE loginName=:ln AND password=:pw";
-        Map m = new HashMap();
-        m.put("ln", loginName);
-        m.put("pw", password);
+		
+		String sql = "SELECT userId, name, phoneNo, email, address, role, loginState, loginName"
+                + " FROM user WHERE loginName="+"'"+loginName+"'" + "AND password="+"'"+password+"'";
+//        Map m = new HashMap();
+//        m.put("ln", loginName);
+//        m.put("pw", password);
+        User u = new User();
+        u = jdbcTemplate.queryForObject(sql, new UserRowMapper());
         try {
-            User u = (User) jdbcTemplate.queryForMap(sql, m, new UserRowMapper());
+        	
             if (u.getLoginState().equals(UserService.LOGIN_STATE_BLOCKED)) {
                 throw new UserBlockedException("Your accout has been blocked. Contact to admin.");
             } else {
@@ -56,10 +61,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void changeLoginStatus(Integer userId, Integer loginState) {
 		String sql = "UPDATE user SET loginStatus=:lst WHERE userId=:uid";
-        Map m = new HashMap();
-        m.put("uid", userId);
-        m.put("lst", loginState);
-        jdbcTemplate.update(sql, m);
+//        Map m = new HashMap();
+//        m.put("uid", userId);
+//        m.put("lst", loginState);
+        jdbcTemplate.update(sql, new Object[] {userId, loginState});
 		
 	}
 

@@ -24,23 +24,24 @@ public class UserJDBCImpl implements UserDAO {
 
 	@Override
 	public void save(User u) {
-		String sql = "INSERT INTO user(name, phone, email, address, loginName, password, role, loginState)"
-                + " VALUES(:name, :phone, :email, :address, :loginName, :password, :role, :loginState)";
-        Map m = new HashMap();
-        m.put("name", u.getName());
-        m.put("phone", u.getPhoneNo());
-        m.put("email", u.getEmail());
-        m.put("address", u.getAddress());
-        m.put("loginName", u.getLoginName());
-        m.put("password", u.getPassword());
-        m.put("role", u.getRole());
-        m.put("loginState", u.getLoginState());
-
-        KeyHolder kh = new GeneratedKeyHolder();
-        SqlParameterSource ps = new MapSqlParameterSource(m);
-        jdbcTemplate.update(sql, ps, kh);
-        Integer userId = kh.getKey().intValue();
-        u.setUserId(userId);
+		String sql = "INSERT INTO user(name, phoneNo, email, address, loginName, password, role, loginState) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		
+//        Map m = new HashMap();
+//        m.put("name", u.getName());
+//        m.put("phoneNo", u.getPhoneNo());
+//        m.put("email", u.getEmail());
+//        m.put("address", u.getAddress());
+//        m.put("loginName", u.getLoginName());
+//        m.put("password", u.getPassword());
+//        m.put("role", u.getRole());
+//        m.put("loginState", u.getLoginState());
+//
+//        KeyHolder kh = new GeneratedKeyHolder();
+//        SqlParameterSource ps = new MapSqlParameterSource(m);
+        jdbcTemplate.update(sql, new Object[] {u.getName(), u.getPhoneNo(), u.getEmail(), u.getAddress(), u.getLoginName(), u.getPassword(), u.getRole(), u.getLoginState()});
+//        Integer userId = kh.getKey().intValue();
+//        u.setUserId(userId);
 		
 	}
 

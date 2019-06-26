@@ -14,7 +14,7 @@ import com.miscproject.contactApp.Utilities.StringUtil;
 @Service
 public class ContactServiceImpl implements ContactService{
 	
-	
+	@Autowired
     private ContactDAO contactDAO;
 	
 	@Autowired

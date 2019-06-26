@@ -1,6 +1,8 @@
 package com.miscproject.contactApp.Domain;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable{
 
 	private Integer contactId;
 	private Integer userId;

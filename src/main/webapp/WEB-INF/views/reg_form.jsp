@@ -51,7 +51,7 @@
                             </tr>
                             <tr>
                                 <td>Phone</td>
-                                <td><f:input path="user.phone" /> </td>
+                                <td><f:input path="user.phoneNo" /> </td>
                             </tr>
                             <tr>
                                 <td>Email</td>

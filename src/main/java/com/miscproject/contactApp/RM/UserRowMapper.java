@@ -13,12 +13,12 @@ public class UserRowMapper implements RowMapper<User>{
         User u=new User();
         u.setUserId(rs.getInt("userId"));
         u.setName(rs.getString("name"));
-        u.setPhoneNo(rs.getString("phone"));
+        u.setPhoneNo(rs.getString("phoneNo"));
         u.setEmail(rs.getString("email"));
         u.setAddress(rs.getString("address"));
         u.setLoginName(rs.getString("loginName"));
         u.setRole(rs.getInt("role"));
-        u.setLoginState(rs.getInt("loginStatus"));
+        u.setLoginState(rs.getInt("loginState"));
         return u;
     }    
 }
