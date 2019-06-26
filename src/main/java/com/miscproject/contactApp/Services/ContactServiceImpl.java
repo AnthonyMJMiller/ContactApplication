@@ -4,15 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import com.miscproject.contactApp.DAO.ContactDAO;
 import com.miscproject.contactApp.Domain.Contact;
 import com.miscproject.contactApp.RM.ContactRowMapper;
 import com.miscproject.contactApp.Utilities.StringUtil;
 
+@Service
 public class ContactServiceImpl implements ContactService{
 	
-	@Autowired
+	
     private ContactDAO contactDAO;
 	
 	@Autowired

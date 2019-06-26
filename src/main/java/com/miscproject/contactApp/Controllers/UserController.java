@@ -18,11 +18,12 @@ import com.miscproject.contactApp.Domain.User;
 import com.miscproject.contactApp.Exception.UserBlockedException;
 import com.miscproject.contactApp.Services.UserService;
 
+
 @Controller
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     @RequestMapping(value = {"/", "/index"})
     public String index(Model m) {

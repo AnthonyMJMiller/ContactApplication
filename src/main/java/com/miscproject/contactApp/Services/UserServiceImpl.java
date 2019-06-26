@@ -7,15 +7,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import com.miscproject.contactApp.DAO.UserDAO;
 import com.miscproject.contactApp.Domain.User;
 import com.miscproject.contactApp.Exception.UserBlockedException;
 import com.miscproject.contactApp.RM.UserRowMapper;
 
+@Service
 public class UserServiceImpl implements UserService{
 	
-	@Autowired
+	
     private UserDAO userDAO;
 	
 	@Autowired
