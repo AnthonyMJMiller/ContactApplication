@@ -10,13 +10,13 @@ public interface ContactService {
 
 	    public void update(Contact c);
 
-	    public void delete(Integer cotactId);
+	    public void delete(Integer contactId);
 	   
 	    /**
 	     * Bulk delete
 	     * @param cotactIds 
 	     */
-	    public void delete(Integer[] cotactIds);
+	    public void delete(Integer[] contactIds);
 	    
 	    public Contact findById(Integer contactId);
 

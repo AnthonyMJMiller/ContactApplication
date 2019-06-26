@@ -1,9 +1,6 @@
 package com.miscproject.contactApp.Exception;
 
 public class UserBlockedException extends Exception{
-    /**
-	 * 
-	 */
 	/**
      * Creates User object without error description.
      */

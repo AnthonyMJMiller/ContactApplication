@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.miscproject.contactApp.DAO.ContactDAO;
 import com.miscproject.contactApp.Domain.Contact;
 import com.miscproject.contactApp.RM.ContactRowMapper;
+import com.miscproject.contactApp.Utilities.StringUtil;
 
 public class ContactServiceImpl implements ContactService{
 	
@@ -36,8 +37,8 @@ public class ContactServiceImpl implements ContactService{
 	}
 
 	@Override
-	public void delete(Integer[] cotactIds) {
-		String ids = StringUtil.toCommaSeparatedString(cotactIds);
+	public void delete(Integer[] contactIds) {
+		String ids = StringUtil.toCommaSeparatedString(contactIds);
         String sql = "DELETE FROM contact WHERE contactId IN("+ids+")";
         jdbcTemplate.update(sql);
 		
