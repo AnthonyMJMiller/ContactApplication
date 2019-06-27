@@ -36,7 +36,7 @@
                             </tr>
                             <tr>
                                 <td>Phone</td>
-                                <td><f:input path="phone" /> </td>
+                                <td><f:input path="phoneNo" /> </td>
                             </tr>
                             <tr>
                                 <td>Email</td>

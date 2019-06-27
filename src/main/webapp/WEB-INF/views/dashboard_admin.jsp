@@ -22,7 +22,7 @@
                 <td height="350px" valign="top">
                      <%-- Page Content Area--%>
                      <h1>Admin Dashboard</h1>
-                      TODO : Admin Options in this page
+                      Admin Options in this page
                 </td>
             </tr>
              

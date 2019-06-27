@@ -67,7 +67,7 @@
                                     <td align="center"><input type="checkbox" name="cid" value="${c.contactId}"/></td>
                                     <td>${c.contactId}</td>
                                     <td>${c.name}</td>
-                                    <td>${c.phone}</td>
+                                    <td>${c.phoneNo}</td>
                                     <td>${c.email}</td>
                                     <td>${c.address}</td>
                                     <td>${c.remark}</td>    

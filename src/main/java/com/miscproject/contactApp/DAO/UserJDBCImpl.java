@@ -55,15 +55,15 @@ public class UserJDBCImpl implements UserDAO {
                 + " role=:role,"
                 + " loginState=:loginState "
                 + " WHERE userId=:userId";
-        Map m = new HashMap();
-        m.put("name", u.getName());
-        m.put("phone", u.getPhoneNo());
-        m.put("email", u.getEmail());
-        m.put("address", u.getAddress());       
-        m.put("role", u.getRole());
-        m.put("loginState", u.getLoginState());
-        m.put("userId", u.getUserId());
-        jdbcTemplate.update(sql, m);
+//        Map m = new HashMap();
+//        m.put("name", u.getName());
+//        m.put("phone", u.getPhoneNo());
+//        m.put("email", u.getEmail());
+//        m.put("address", u.getAddress());       
+//        m.put("role", u.getRole());
+//        m.put("loginState", u.getLoginState());
+//        m.put("userId", u.getUserId());
+        jdbcTemplate.update(sql, new UserRowMapper());
 		
 	}
 

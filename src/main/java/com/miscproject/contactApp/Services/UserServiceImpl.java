@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void changeLoginStatus(Integer userId, Integer loginState) {
-		String sql = "UPDATE user SET loginStatus=:lst WHERE userId=:uid";
+		String sql = "UPDATE user SET loginState=:lst WHERE userId=:uid";
 //        Map m = new HashMap();
 //        m.put("uid", userId);
 //        m.put("lst", loginState);
